@@ -15,8 +15,8 @@ SRC_URI="git://git@github.com/armPelionEdge/mbed-devicejs-bridge;protocol=ssh;br
 git://git@github.com/armPelionEdge/mbed-edge-websocket.git;protocol=ssh;branch=master;name=edgejs;destsuffix=git/edgejs \
 file://config-dev.json"
 SRCREV_FORMAT = "bridge-edgejs"
-SRCREV_bridge = "${AUTOREV}"
-SRCREV_edgejs = "${AUTOREV}"
+SRCREV_bridge = "228c2bbf37231f64ffd662be72ced5a2c0eb3077"
+SRCREV_edgejs = "79ee162ba5f6eb2b226500e1f8bd3d7f07ee7f45"
 
 
 DEPENDS = "nodejs node-native"

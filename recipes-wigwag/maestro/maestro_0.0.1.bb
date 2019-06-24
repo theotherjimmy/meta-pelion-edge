@@ -28,8 +28,8 @@ file://maestro.sh \
 "
 
 SRCREV_FORMAT="m-wd"
-SRCREV_m="${AUTOREV}"
-SRCREV_wd="${AUTOREV}"
+SRCREV_m = "5081260ebbd2514deacd6231a0516c962ee0faea"
+SRCREV_wd = "54ee3bd50b063425606ad76aefad4167780d8760"
 
 S = "${WORKDIR}/git"
 

@@ -13,7 +13,7 @@ file://devicedb \
 "
 
 SRCREV_FORMAT = "ddb"
-SRCREV_ddb = "${AUTOREV}"
+SRCREV_ddb = "5a6f1c38fcdaab4754af88f4ca7c71c293435e18"
 S = "${WORKDIR}/git"
 
 DEPENDS = ""

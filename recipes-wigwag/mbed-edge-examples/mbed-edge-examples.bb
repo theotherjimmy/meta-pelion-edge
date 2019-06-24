@@ -17,7 +17,7 @@ SRC_URI = "git://git@github.com/ARMmbed/mbed-edge-examples.git;protocol=ssh; \
            file://mept-ble.init \
            "
 
-SRCREV = "0.8.0"
+SRCREV = "0.9.0"
 
 # Installed packages
 PACKAGES = "${PN} ${PN}-dbg"
