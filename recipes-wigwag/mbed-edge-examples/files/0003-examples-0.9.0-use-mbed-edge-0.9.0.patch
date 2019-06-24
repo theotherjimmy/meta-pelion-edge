@@ -1,0 +1,20 @@
+From 7d4ff3a51986c87ecb45c5b8322da1faa059f2d6 Mon Sep 17 00:00:00 2001
+From: Travis McCollum <x85446@yahoo.com>
+Date: Mon, 24 Jun 2019 18:05:34 +0000
+Subject: [PATCH] examples-0.9.0-use-mbed-edge-0.9.0
+
+---
+ .gitmodules | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/.gitmodules b/.gitmodules
+index 6f573db..eecbd52 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -4,3 +4,5 @@
+ [submodule "lib/mbed-edge"]
+ 	url = git@github.com:ARMmbed/mbed-edge.git
+ 	path = lib/mbed-edge
++	branch = refs/tags/0.9.0
++	
+\ No newline at end of file

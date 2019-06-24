@@ -12,7 +12,7 @@ SRC_URI = "git://git@github.com/ARMmbed/mbed-edge-examples.git;protocol=ssh; \
            file://blept-devices.json \
            file://0001-disable-doxygen.patch \
            file://0002-fix-libevent-build-with-CMake-in-Yocto.patch \
-           file://0003-examples-0.8.0-should-use-mbed-edge-0.8.0.patch \
+           file://0003-examples-0.9.0-use-mbed-edge-0.9.0.patch \
            file://0004-fix-CMake-test-Build-Type-Release.patch \
            file://mept-ble.init \
            "

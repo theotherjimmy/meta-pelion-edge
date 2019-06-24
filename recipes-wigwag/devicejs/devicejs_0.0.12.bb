@@ -13,11 +13,11 @@ SRCREV = "5a6f1c38fcdaab4754af88f4ca7c71c293435e18"
 S = "${WORKDIR}/git"
 
 DEPENDS = "nodejs node-native udev avahi"
-RDEPENDS_${PN} += " nodejs"
+RDEPENDS_${PN} += " nodejs python"
 
 BBCLASSEXTEND = "native"
 
-INHIBIT_PACKAGE_STRIP = "1"  
+INHIBIT_PACKAGE_STRIP = "1"
 
 FILES_${PN} = "/wigwag/*"
 
