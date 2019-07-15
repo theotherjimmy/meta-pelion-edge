@@ -1,0 +1,8 @@
+{
+  "moduleconfigs": [
+    {
+      "exec_cmd": "${thisdir}/../../mbed/mbed-devicejs-bridge",
+      "config": "{ \"debug\": true, \"mapUnplacedDevices\": true, \"ignoreDevicesById\": [], \"relayID\": \"{{{serialNumber}}}\", \"mbedAPIKey\": \"ak_1MDE1ZDUwYTFmYmM2MDI0MjBhMDExMTA5MDAwMDAwMDA015e967fe74802420a01390300000000aJOhYRqzTXINzN9Aw2OkV5WrG0YwgmKS\", \"spawnEdgeCore\": false, \"edgeExecCmd\": [ \"/apps/mbed-cloud-edge-confidential-w/build/mcc-linux-x86/existing/bin/edge-core\", \"/tmp/edge.sock\", \"9101\" ], \"ssl\": { \"key\": \"/userdata/edge_gw_config/.ssl/client.key.pem\", \"cert\": \"/userdata/edge_gw_config/.ssl/client.cert.pem\" } }"
+    }
+  ]
+}

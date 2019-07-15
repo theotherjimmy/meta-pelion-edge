@@ -6,7 +6,7 @@ After=edge-core.service
 Restart=on-failure
 RestartSec=5s
 RemainAfterExit=true
-ExecStart=/wigwag/wwrelay-utils/debug_scripts/create-new-eeprom-with-self-signed-certs.sh
+ExecStart=/wigwag/system/bin/wait-for-pelion-identity.sh
 
 [Install]
 WantedBy=network.target

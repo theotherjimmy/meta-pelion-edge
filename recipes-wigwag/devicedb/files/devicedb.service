@@ -1,0 +1,8 @@
+[Unit]
+Description=DeviceDB eventually consistant database
+After=maestro.service
+
+[Service]
+Restart=always
+RestartSec=1s
+ExecStart=/wigwag/system/bin/devicedb start -conf=/wigwag/etc/devicejs/devicedb.yaml

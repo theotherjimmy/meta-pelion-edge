@@ -1,0 +1,16 @@
+{
+  "moduleconfigs": [
+    {
+      "exec_cmd": "${thisdir}/../../wigwag-core-modules/RelayStatsSender",
+      "config": " { \"cloudAddress\":\"{{{gatewayServiecAddress}}}\", \"relayID\":\"{{{serialNumber}}}\", \"ssl\":{ \"key\":\"/userdata/edge_gw_identity/.ssl/client.key.pem\", \"cert\":\"/userdata/edge_gw_identity/.ssl/client.cert.pem\", \"ca\":[ \"/userdata/edge_gw_identity/.ssl/ca.cert.pem\", \"/userdata/edge_gw_identity/.ssl/intermediate.cert.pem\" ] }, \"versionsFile\":\"/wigwag/etc/version.json\", \"factoryVersionsFile\": \"/mnt/.overlay/factory/wigwag/etc/version.json\", \"userVersionsFile\": \"/mnt/.overlay/user/wigwag/etc/version.json \"upgradeVersionsFile\": \"/mnt/.overlay/upgrade/wigwag/etc/version.json\", \"relayInfo\": { \"serialNumber\": \"{{{serialNumber}}}\", \"hardwareVersion\": \"{{{hardwareVersion}}}\", \"radioConfig\": \"{{{radioConfig}}}\", \"ledConfig\": \"{{{ledConfig}}}\", \"cloud\": \"{{{gatewayServiecAddress}}}\", \"ethernetMac\": \"{{{ethernetMac}}}\" } } "
+    },
+    {
+      "exec_cmd": "${thisdir}/../../wigwag-core-modules/VirtualDeviceDriver",
+      "config": " { \"deviceControllersDirectory\": \"templates\", \"hideTemplates\": [ \"VideoCamera\" ], \"logLevel\": 1 } "
+    },
+    {
+      "exec_cmd": "${thisdir}/../../wigwag-core-modules/onsite-enterprise-server",
+      "config": "{ \"prodPort\": \"3131\", \"modelDefinitions\": \"/api/models\", \"logRequests\": false, \"logLevel\": 2 }"
+    }
+  ]
+}

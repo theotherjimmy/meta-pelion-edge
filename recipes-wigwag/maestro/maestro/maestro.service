@@ -8,4 +8,4 @@ Environment="LD_LIBRARY_PATH=/wigwag/system/lib"
 ExecStart=/wigwag/system/bin/maestro -config /etc/maestro/config.yaml
 
 [Install]
-RequiredBy=network.target
+WantedBy=network.target

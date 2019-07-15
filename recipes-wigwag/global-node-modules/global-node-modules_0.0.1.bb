@@ -2,13 +2,31 @@ DESCRIPTION = "DeviceJS Core Modules"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=4336ad26bb93846e47581adc44c4514d"
 
-inherit pkgconfig gitpkgv npm-base autotools
+inherit pkgconfig gitpkgv npm-base autotools systemd
+
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICES_${PN} = "\
+  core-interfaces.service\
+  node-user-modules.service\
+  node-core-modules.service\
+  node-zigbee-modules.service\
+  "
+SYSTEMD_AUTO_ENABLE_${PN} = "enable"
 
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r6"
 
-SRC_URI="git://git@github.com/armPelionEdge/edge-node-modules.git;protocol=ssh"
+SRC_URI="git://git@github.com/armPelionEdge/edge-node-modules.git;protocol=ssh\
+  file://core-interfaces.service\
+  file://node-composite-core.json\
+  file://node-core-modules.service\
+  file://node-composite-all-modules.json\
+  file://node-composite-user.json\
+  file://node-user-modules.service\
+  file://node-composite-zigbee.json\
+  file://node-zigbee-modules.service\
+  "
 SRCREV = "${AUTOREV}"
 SRCREV_devjs_prod_tools = "master"
 
@@ -20,7 +38,15 @@ BBCLASSEXTEND = "native"
 DEPENDS = "nodejs avahi udev nodejs-native"
 RDEPENDS_${PN} += " nodejs"
 
-FILES_${PN} = "/wigwag/* /wigwag/wigwag-core-modules/* /wigwag/devicejs-core-modules/*"
+FILES_${PN} = "\
+  /wigwag/*\
+  /wigwag/wigwag-core-modules/*\
+  /wigwag/devicejs-core-modules/*\
+  ${systemd_system_unitdir}/core-interfaces.service\
+  ${systemd_system_unitdir}/node-user-modules.service\
+  ${systemd_system_unitdir}/node-core-modules.service\
+  ${systemd_system_unitdir}/node-zigbee-modules.service\
+  "
 
 INHIBIT_PACKAGE_STRIP = "1"
 
@@ -101,8 +127,19 @@ do_install() {
 	install -d ${D}/wigwag
 	install -d ${D}/wigwag/devicejs-core-modules
 	install -d ${D}/wigwag/devicejs-core-modules/node_modules
+  install -d ${D}/wigwag/etc/node-composite
 	install -d ${D}/wigwag/system/bin
 	install -d ${D}/wigwag/wigwag-core-modules
+  install -d ${D}${systemd_system_unitdir}
+  install -d ${D}/wigwag/etc/node-composite
+  install -m 644 ${WORKDIR}/core-interfaces.service ${D}${systemd_system_unitdir}
+  install -m 644 ${WORKDIR}/node-user-modules.service ${D}${systemd_system_unitdir}
+  install -m 644 ${WORKDIR}/node-core-modules.service ${D}${systemd_system_unitdir}
+  install -m 644 ${WORKDIR}/node-zigbee-modules.service ${D}${systemd_system_unitdir}
+  install -m 644 ${WORKDIR}/node-composite-all-modules.json ${D}/wigwag/etc/node-composite/all-modules.json
+  install -m 644 ${WORKDIR}/node-composite-core.json ${D}/wigwag/etc/node-composite/core.json
+  install -m 644 ${WORKDIR}/node-composite-user.json ${D}/wigwag/etc/node-composite/user.tmpl
+  install -m 644 ${WORKDIR}/node-composite-zigbee.json ${D}/wigwag/etc/node-composite/zigbee.json
 	cp -r ${S}/package.json ${D}/wigwag/devicejs-core-modules/
 	ALL_WigWag_Core_Modules="DevStateManager LEDController RelayStatsSender VirtualDeviceDriver onsite-enterprise-server relay-term"
     for f in $ALL_WigWag_Core_Modules; do

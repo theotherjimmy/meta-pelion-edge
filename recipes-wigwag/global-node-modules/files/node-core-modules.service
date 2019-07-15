@@ -1,0 +1,16 @@
+[Unit]
+Description=Core Interfaces
+After=devicejs.service wait-for-pelion-identity.service
+Requires=devicejs.service wait-for-pelion-identity.service
+
+[Service]
+Restart=always
+RestartSec=90s
+Environment= LD_PRELOAD=/usr/lib/libcrypto.so.1.0.2
+Environment= NODE_PATH=/wigwag/devicejs-ng/node_modules
+Environment= DEVJS_ROOT=/wigwag/devicejs-ng
+Environment= DEVJS_CONFIG_FILE=/wigwag/etc/devicejs/devicejs.conf
+ExecStart=/usr/bin/node --max-old-space-size=128 --max-semi-space-size=1 /wigwag/devicejs-core-modules/maestroRunner < /wigwag/etc/node-composite/core.json
+
+[Install]
+WantedBy=multi-user.target

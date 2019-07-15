@@ -4,13 +4,14 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1dece7821bf3fd70fe1309eaa37d52a2"
 
 SRC_URI="\
-  git://git@github.com/armPelionEdge/edge-utils.git;protocol=ssh;name=wwrelay \
+  git://git@github.com/armPelionEdge/edge-utils.git;protocol=ssh;name=wwrelay;branch=manage-proc-with-systemd \
   git://git@github.com/armPelionEdge/edgeos-shell-scripts.git;protocol=ssh;name=dss;destsuffix=git/dss \
   git://git@github.com/armPelionEdge/node-i2c.git;protocol=ssh;name=node_i2c;destsuffix=git/tempI2C/node-i2c \
   file://wwrelay \
   file://BUILDMMU.txt \
   file://wwrelay.service \
   file://wait-for-pelion-identity.service \
+  file://wait-for-pelion-identity.sh \
   file://do-post-upgrade.service \
   file://logrotate_directives/ \
 "
@@ -36,12 +37,12 @@ PKGV = "1.0+git${GITPKGV}"
 PR = "r7"
 
 DEPENDS = "update-rc.d-native nodejs nodejs-native"
-RDEPENDS_${PN} += " bash nodejs openssl10"
+RDEPENDS_${PN} += " bash nodejs openssl10 mustache"
 
 FILES_${PN} = "\
   /wigwag/*\
-  /wigwag/etc\
   /wigwag/etc/*\
+  /wigwag/system/bin/*\
   /etc/logrotate.d/*\
   /etc/init.d\
   /etc/init.d/*\
@@ -186,6 +187,8 @@ do_install() {
   install -m 644 ${WORKDIR}/wwrelay.service ${D}${systemd_system_unitdir}/wwrelay.service
   install -m 644 ${WORKDIR}/wait-for-pelion-identity.service ${D}${systemd_system_unitdir}/wait-for-pelion-identity.service
   install -m 644 ${WORKDIR}/do-post-upgrade.service ${D}${systemd_system_unitdir}/do-post-upgrade.service
+  install -d ${D}/wigwag/system/bin
+  install -m 755 ${WORKDIR}/wait-for-pelion-identity.sh ${D}/wigwag/system/bin/wait-for-pelion-identity.sh
 
 	#spreadsheet work needed
 	#conf

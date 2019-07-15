@@ -1,0 +1,8 @@
+{
+  "moduleconfigs": [
+    {
+      "exec_cmd": "${thisdir}/../core-interfaces",
+      "config": "{}"
+    }
+  ]
+}
