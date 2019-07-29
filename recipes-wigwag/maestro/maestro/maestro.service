@@ -5,7 +5,7 @@ Descritpion=Maestro: Network, Config, DeviceJS manager
 Restart=always
 RestartSec=5s
 Environment="LD_LIBRARY_PATH=/wigwag/system/lib"
-ExecStart=/wigwag/system/bin/maestro -config /wigwag/wwrelay-utils/conf/maestro-conf/edge-config-rpi-production.yaml
+ExecStart=/wigwag/system/bin/maestro -config /etc/maestro/config.yaml
 
 [Install]
 RequiredBy=network.target
